@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # 定义 UUID 及伪装路径、哪吒面板参数，请自行修改. (注意:伪装路径以 / 符号开始,为避免不必要的麻烦,请不要使用特殊符号.)
-UUID='de04add9-5c68-8bab-950c-08cd5320df18'
-VMESS_WSPATH='/vmess'
-VLESS_WSPATH='/vless'
-TROJAN_WSPATH='/trojan'
-SS_WSPATH='/shadowsocks'
+UUID='958d3fa9-215f-46d8-9277-de3908b7068f'
+VMESS_WSPATH='/463494a4'
+VLESS_WSPATH='/58879493'
+TROJAN_WSPATH='/fcb95cf5'
+SS_WSPATH='/148c9923'
 NEZHA_SERVER=''
 NEZHA_PORT=''
 NEZHA_KEY=''
@@ -30,6 +30,7 @@ rm -f config.json
 # 如果有设置哪吒探针三个变量,会安装。如果不填或者不全,则不会安装
 [ -n "${NEZHA_SERVER}" ] && [ -n "${NEZHA_PORT}" ] && [ -n "${NEZHA_KEY}" ] && wget https://raw.githubusercontent.com/naiba/nezha/master/script/install.sh -O nezha.sh && chmod +x nezha.sh && ./nezha.sh install_agent ${NEZHA_SERVER} ${NEZHA_PORT} ${NEZHA_KEY}
 
+sed -i "s/80 default_server/${PORT:-8080} default_server/g" /etc/nginx/nginx.conf
 nginx
 base64 -d config > config.json
 ./${RELEASE_RANDOMNESS} -config=config.json
