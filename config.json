@@ -123,6 +123,11 @@
 					"geosite:speedtest"
 				],
 				"outboundTag": "blocked"
+			},
+			{
+				"type": "field",
+				"network": "tcp,udp",
+				"outboundTag": "WARP"
 			}
 		]
 	},
